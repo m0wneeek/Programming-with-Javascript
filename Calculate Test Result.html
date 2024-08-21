@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body {
+            font-family: sans-serif;
+            text-align: center;
+          }
+          
+          button {
+              display: block;
+              margin: 20px auto;
+          }
+          
+          input {
+              height: 25px;
+          }
+        </style>
+    </head>
+    <body>
+        <h1>Test results</h1>
+        <form onsubmit ="showResult(event)">
+            <p>Test score out of 100</p>
+            <input type="number" name="testScore">
+            <button type="submit">Get result</button>
+        </form>
+        <h2 id="result"></h2>
+        <script>
+          function showResult(event) {
+            event.preventDefault();
+            let form = event.target;
+            let testValue = form.testScore.value;
+            
+            console.log(testValue);
+            
+            let result = calculateResult(testValue);
+            let resultElement = document.getElementById("result");
+            resultElement.innerText = "Your result is a " + result;
+          }
+          
+          function calculateResult(testValue) {
+              if (testValue < 50) {
+                  return "Fail";
+              } else if (testValue < 65) {
+                  return "Pass";
+              } else if (testValue < 80) {
+                  return "Merit";
+              } else {
+                  return "Distinction";
+              }
+          }
+        </script>
+    </body>
+</html>
