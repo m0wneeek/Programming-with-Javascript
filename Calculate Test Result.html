@@ -31,21 +31,21 @@
           function showResult(event) {
             event.preventDefault();
             let form = event.target;
-            let testValue = form.testScore.value;
+            let testScore = form.testScore.Score;
             
-            console.log(testValue);
+            console.log(testScore);
             
-            let result = calculateResult(testValue);
+            let result = calculateResult(testScore);
             let resultElement = document.getElementById("result");
             resultElement.innerText = "Your result is a " + result;
           }
           
-          function calculateResult(testValue) {
-              if (testValue < 50) {
+          function calculateResult(testScore) {
+              if (testScore < 50) {
                   return "Fail";
-              } else if (testValue < 65) {
+              } else if (testScore < 65) {
                   return "Pass";
-              } else if (testValue < 80) {
+              } else if (testScore < 80) {
                   return "Merit";
               } else {
                   return "Distinction";
