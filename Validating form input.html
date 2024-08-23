@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          body {
+              background-color: darkslategrey;
+              color: white;
+              font-family: sans-serif;
+              text-align: center;
+          }
+          
+          button {
+              display: block;
+              margin: 20px auto;
+              padding: 10px;
+              background-color: darkorange;
+              font-weight: bold;
+          }
+          
+          input {
+              height: 25px;
+          }
+          
+          #feedback {
+              font-weight: bold;
+          }
+        </style>
+    </head>
+    <body>
+        <form onsubmit="handleForm(event)">
+            <p>Would you recommend this product to a friend?</p>
+            <input type="text" name="answer" required>
+            <p id="feedback"></p>
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+        <script>
+          function handleForm(event) {
+            event.preventDefault();
+            let form = event.target;
+            let formValidated = validateAnswer(form);
+            if (formValidated) {
+                let button = document.getElementById("submitButton");
+                button.innerText = "Sent";
+            }
+          }
+          
+          function validateAnswer(form) {
+              let answer = form.answer.value;
+              let feedback = document.getElementById("feedback");
+              
+              if (answer === "yes") {
+                  feedback.innerText = "Great! :D";
+                  return true;
+              } else if (answer === "no" ) {
+                  feedback.innerText = "We are sorry to hear that :(";
+                  return true;
+              } else {
+                  feedback.innerText = "Invalid response. Please enter a yes or no";
+                  return false;
+              }
+          }
+        </script>
+    </body>
+</html>
